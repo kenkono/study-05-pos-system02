@@ -12,6 +12,7 @@ size=(700,600)
 @ eel.expose
 def main():
     pos.main()
+    number = pos.order_item_number()
     
 desktop.start(app_name,end_point,size)
 #desktop.start(size=size,appName=app_name,endPoint=end_point)

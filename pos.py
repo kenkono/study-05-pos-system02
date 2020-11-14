@@ -35,6 +35,7 @@ class Order:
     def view_item_number(self):
         for item in self.item_number_list:
             print("注文商品個数:{}".format(item))
+            return item
     
     # マスター情報の表示
     def view_master_list(self):
@@ -129,3 +130,8 @@ def main():
     # テキスト出力
     receipt_text = "注文商品: " + str(order.view_order_list()[0].item_name)+ "\n" +"単価: " + str(order.view_order_list()[0].price)+ "\n" +"合計金額: " + str(sum_order_price)+ "\n" + "合計個数: " + str(sum_order_quantity)+ "\n" + "お釣り: " + str(change)
     master.output_txt(receipt_text)
+
+def order_item_number():
+    order = Order()
+    item = order.view_item_number
+    return item

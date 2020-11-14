@@ -9,9 +9,11 @@
             商品コード<input id="" type="text"><br/>
             注文個数<input id="" type="text"><br/>
             <p>ご注文の商品情報</p>
+            <p id="show_number"></p>
             <p>合計金額</p>
             お預かり金額<input id="" type="text"><br/>
             <p>お釣り</p>
+            <p id="show_change"></p>
             <button id="search">検索</button><br/>
         </div>
         <div>
@@ -21,6 +23,10 @@
             search.addEventListener('click', () => {
                 //alert(serch_word.value)
                 eel.main()
+                var show_number = document.getElementById("show_number");
+                show_number.textContent = show_number;
+                var show_change = document.getElementById("show_change");
+                show_change.textContent = show_change;
             })
             eel.expose(view_log_js)
             function view_log_js(text){
