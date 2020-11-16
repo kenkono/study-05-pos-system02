@@ -6,31 +6,48 @@
     <body>
         <h2>入力してください</h2>
         <div class="">
-            商品コード<input id="" type="text"><br/>
-            注文個数<input id="" type="text"><br/>
-            <p>ご注文の商品情報</p>
-            <p id="show_number"></p>
+            商品コード<input id="item_code" type="text"><br/>
+            注文個数<input id="quantity" type="text"><br/>
+            <button id="check_1">確定</button><br/>
+            <p>ご注文の商品コード</p>
+            <p id="show_item_code"></p>
+            <p>ご注文個数</p>
+            <p id="show_item_quantity"></p>
             <p>合計金額</p>
-            お預かり金額<input id="" type="text"><br/>
+            <p id="show_total_price"></p>
+            お預かり金額<input id="pay_amount" type="text"><br/>
             <p>お釣り</p>
             <p id="show_change"></p>
             <button id="search">検索</button><br/>
         </div>
         <div>
+            <textarea id="result" class="log-view-area"></textarea>
         </div>
         <script type="text/javascript" src="./eel.js"></script>
         <script>
-            search.addEventListener('click', () => {
+            check_1.addEventListener('click', () => {
                 //alert(serch_word.value)
-                eel.main()
-                var show_number = document.getElementById("show_number");
-                show_number.textContent = show_number;
-                var show_change = document.getElementById("show_change");
-                show_change.textContent = show_change;
+                eel.main(item_code.value, quantity.value)
             })
-            eel.expose(view_log_js)
-            function view_log_js(text){
-                result.value += text + "\n"
+
+            eel.expose(view_item_code)
+            function view_item_code(text){
+                show_item_code.value += text + "\n"
+            }
+
+            eel.expose(view_order_quantity)
+            function view_order_quantity(text){
+                show_item_quantity.value += text + "\n"
+            }
+
+            eel.expose(view_total_price)
+            function view_total_price(text){
+                show_total_price.value += text + "\n"
+            }
+
+            eel.expose(view_change)
+            function view_change(text){
+                show_change.value += text + "\n"
             }
         </script>
     </body>

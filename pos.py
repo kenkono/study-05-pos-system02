@@ -26,16 +26,16 @@ class Order:
     # 個数の登録
     def add_item_number(self,item_number):
         self.item_number_list.append(item_number)
-        
+
+    # 注文商品コードの表示    
     def view_item_list(self):
         for item in self.item_order_list:
-            print("注文商品コード:{}".format(item))
+            eel.view_item_code(item)
 
     # 個数の表示
     def view_item_number(self):
         for item in self.item_number_list:
-            print("注文商品個数:{}".format(item))
-            return item
+            eel.view_total_price("注文商品個数:{}".format(item))
     
     # マスター情報の表示
     def view_master_list(self):
@@ -58,6 +58,7 @@ class Order:
             for master in self.item_master:
                 if master.item_code == order_item:
                     sum_price+=int(master.price)
+        eel.view_total_price(sum_price)
         return sum_price
 
     # オーダー商品の合計個数
@@ -65,7 +66,7 @@ class Order:
         sum_quantity=0
         for number in self.item_number_list:
             sum_quantity+=int(number)
-        print("合計個数:{}".format(sum_quantity))
+        eel.view_order_quantity(sum_quantity)
         return sum_quantity
 
 class Master:
@@ -94,18 +95,18 @@ class Master:
             f.write(receipt_text)
 
 ### メイン処理
-def main():
+def main(item_code, order_quantity):
     master=Master()
     item_master=master.read_master_item('master.csv')
     
     # オーダー商品コード登録
     order=Order(item_master)
-    order_number=input("商品コードを入力してください。")
-    order.add_item_order(order_number)
+    # order_number=input("商品コードを入力してください。")
+    order.add_item_order(item_code)
     
     # オーダー個数入力
-    item_number=input("商品個数を入力してください。")
-    order.add_item_number(item_number)
+    # item_number=input("商品個数を入力してください。")
+    order.add_item_number(order_quantity)
     
     # オーダー商品コード表示
     order.view_item_list()
@@ -121,11 +122,10 @@ def main():
 
     # オーダーの合計金額表示
     sum_order_price=sum_order_quantity*order.sum_order_price()
-    print("合計金額:{}".format(sum_order_price))
 
     # お釣りの表示
     change=int(master.pay_amount())-(sum_order_price)
-    print("お釣り:{}".format(change))
+    eel.view_change(change)
 
     # テキスト出力
     receipt_text = "注文商品: " + str(order.view_order_list()[0].item_name)+ "\n" +"単価: " + str(order.view_order_list()[0].price)+ "\n" +"合計金額: " + str(sum_order_price)+ "\n" + "合計個数: " + str(sum_order_quantity)+ "\n" + "お釣り: " + str(change)
