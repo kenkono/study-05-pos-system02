@@ -123,7 +123,9 @@ def main(item_code, order_quantity):
     # receipt_text = "注文商品: " + str(order.view_order_list()[0].item_name)+ "\n" +"単価: " + str(order.view_order_list()[0].price)+ "\n" +"合計金額: " + str(sum_order_price)+ "\n" + "合計個数: " + str(sum_order_quantity)+ "\n" + "お釣り: " + str(change)
     # master.output_txt(receipt_text)
 
-def show_change(pay_amount):
-    sum_order_price = 
+def show_change(pay_amount, total_price):
+    master=Master()
+    sum_order_price = total_price
+    print(sum_order_price)
     change=int(master.pay_amount(pay_amount))-(sum_order_price)
     eel.view_change("お釣り:{}".format(change))

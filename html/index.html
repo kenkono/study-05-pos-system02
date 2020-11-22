@@ -5,7 +5,6 @@
     </head>
     <body>
         <h2>入力してください</h2>
-        <div class="">
             商品コード<input id="item_code" type="text"><br/>
             注文個数<input id="quantity" type="text"><br/>
             <button id="check_1">確定</button><br/>
@@ -27,7 +26,7 @@
             })
             check_2.addEventListener('click', () => {
                 //alert(serch_word.value)
-                eel.main_2(pay_amount.value)
+                eel.main_2(pay_amount.value, sessionStorage.getItem('total_price'))
             })
 
             eel.expose(view_item_code)
@@ -42,7 +41,8 @@
 
             eel.expose(view_total_price)
             function view_total_price(text){
-                show_total_price.innerHTML += text + "\n"
+                show_total_price.innerHTML += text + "\n";
+                sessionStorage.setItem('total_price', show_total_price.innerHTML);
             }
 
             eel.expose(view_change)
