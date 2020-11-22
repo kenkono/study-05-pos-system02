@@ -9,45 +9,45 @@
             商品コード<input id="item_code" type="text"><br/>
             注文個数<input id="quantity" type="text"><br/>
             <button id="check_1">確定</button><br/>
-            <p>ご注文の商品コード</p>
+            <!-- ご注文の商品コード -->
             <p id="show_item_code"></p>
-            <p>ご注文個数</p>
+            <!-- ご注文個数 -->
             <p id="show_item_quantity"></p>
-            <p>合計金額</p>
+            <!-- 合計金額 -->
             <p id="show_total_price"></p>
             お預かり金額<input id="pay_amount" type="text"><br/>
-            <p>お釣り</p>
+            <button id="check_2">確定</button><br/>
+            <!-- お釣り -->
             <p id="show_change"></p>
-            <button id="search">検索</button><br/>
-        </div>
-        <div>
-            <textarea id="result" class="log-view-area"></textarea>
-        </div>
         <script type="text/javascript" src="./eel.js"></script>
         <script>
             check_1.addEventListener('click', () => {
                 //alert(serch_word.value)
-                eel.main(item_code.value, quantity.value)
+                eel.main_1(item_code.value, quantity.value)
+            })
+            check_2.addEventListener('click', () => {
+                //alert(serch_word.value)
+                eel.main_2(pay_amount.value)
             })
 
             eel.expose(view_item_code)
             function view_item_code(text){
-                show_item_code.value += text + "\n"
+                show_item_code.innerHTML += text + "\n"
             }
 
             eel.expose(view_order_quantity)
             function view_order_quantity(text){
-                show_item_quantity.value += text + "\n"
+                show_item_quantity.innerHTML += text + "\n"
             }
 
             eel.expose(view_total_price)
             function view_total_price(text){
-                show_total_price.value += text + "\n"
+                show_total_price.innerHTML += text + "\n"
             }
 
             eel.expose(view_change)
             function view_change(text){
-                show_change.value += text + "\n"
+                show_change.innerHTML += text + "\n"
             }
         </script>
     </body>

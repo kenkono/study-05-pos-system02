@@ -10,8 +10,11 @@ size=(700,600)
 # def kimetsu_search(word,csv_name):
 #     search.kimetsu_search(word,csv_name)
 @ eel.expose
-def main(item_code, order_quantity):
+def main_1(item_code, order_quantity):
     pos.main(item_code, order_quantity)
+
+def main_2(pay_amount):
+    pos.show_change(pay_amount)
     
 desktop.start(app_name,end_point,size)
 #desktop.start(size=size,appName=app_name,endPoint=end_point)
