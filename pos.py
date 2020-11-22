@@ -30,7 +30,7 @@ class Order:
     # 注文商品コードの表示    
     def view_item_list(self):
         for item in self.item_order_list:
-            eel.view_item_code("注文商品コード:{}".format(item))
+            eel.view_item_code(item)
 
     # 個数の表示
     # def view_item_number(self):
@@ -65,7 +65,7 @@ class Order:
         sum_quantity=0
         for number in self.item_number_list:
             sum_quantity+=int(number)
-        eel.view_order_quantity("注文商品個数:{}".format(sum_quantity))
+        eel.view_order_quantity(sum_quantity)
         return sum_quantity
 
 class Master:
@@ -112,7 +112,7 @@ def main(item_code, order_quantity):
 
     # オーダーの合計金額表示
     sum_order_price=sum_order_quantity*order.sum_order_price()
-    eel.view_total_price("合計金額:{}".format(sum_order_price))
+    eel.view_total_price(sum_order_price)
 
 
     # お釣りの表示
@@ -125,5 +125,7 @@ def main(item_code, order_quantity):
 
 def show_change(pay_amount, total_price):
     # master=Master()
-    change=int(pay_amount)-int(total_price)
-    eel.view_change("お釣り:{}".format(change))
+    print(pay_amount)
+    print(total_price)
+    change=(pay_amount)-(total_price)
+    eel.view_change(change)
