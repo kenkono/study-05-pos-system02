@@ -14,7 +14,7 @@ def main_1(item_code, order_quantity):
     pos.main(item_code, order_quantity)
 
 def main_2(pay_amount, total_price):
-    pos.show_change(pay_amount)
+    pos.show_change(pay_amount, total_price)
     
 desktop.start(app_name,end_point,size)
 #desktop.start(size=size,appName=app_name,endPoint=end_point)

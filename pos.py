@@ -124,8 +124,6 @@ def main(item_code, order_quantity):
     # master.output_txt(receipt_text)
 
 def show_change(pay_amount, total_price):
-    master=Master()
-    sum_order_price = total_price
-    print(sum_order_price)
-    change=int(master.pay_amount(pay_amount))-(sum_order_price)
+    # master=Master()
+    change=int(pay_amount)-int(total_price)
     eel.view_change("お釣り:{}".format(change))

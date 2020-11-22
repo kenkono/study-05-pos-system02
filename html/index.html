@@ -26,7 +26,8 @@
             })
             check_2.addEventListener('click', () => {
                 //alert(serch_word.value)
-                eel.main_2(pay_amount.value, sessionStorage.getItem('total_price'))
+                total_price = show_total_price.innerHTML
+                eel.main_2(pay_amount.value, total_price)
             })
 
             eel.expose(view_item_code)
@@ -42,7 +43,6 @@
             eel.expose(view_total_price)
             function view_total_price(text){
                 show_total_price.innerHTML += text + "\n";
-                sessionStorage.setItem('total_price', show_total_price.innerHTML);
             }
 
             eel.expose(view_change)
