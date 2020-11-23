@@ -17,7 +17,8 @@ CHROME_ARGS = [
 ALLOW_EXTENSIONS = ['.html', '.css', '.js', '.ico']
 
 
-def start(appName, endpoint,size):  # 画面生成
+# 画面生成
+def start(appName, endpoint, size):
     eel.init(appName, allowed_extensions=ALLOW_EXTENSIONS)
     # 未使用ポート取得
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -34,5 +35,6 @@ def start(appName, endpoint,size):  # 画面生成
         size = size, suppress_error=True)
 
 
-def exit(arg1, arg2):  # 終了時の処理
+# 終了時の処理
+def exit(arg1, arg2):
     sys.exit(0)

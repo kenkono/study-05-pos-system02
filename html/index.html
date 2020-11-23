@@ -4,24 +4,36 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <h2>入力してください</h2>
-            商品コード<input id="item_code" type="text"><br/>
-            注文個数<input id="quantity" type="text"><br/>
-            <button id="check_1">確定</button><br/>
-            <!-- ご注文の商品コード -->
-            商品コード
-            <p id="show_item_code"></p>
-            <!-- ご注文個数 -->
-            注文個数
-            <p id="show_item_quantity"></p>
-            <!-- 合計金額 -->
-            合計金額
-            <p id="show_total_price"></p>
-            お預かり金額<input id="pay_amount" type="text"><br/>
-            <button id="check_2">確定</button><br/>
-            <!-- お釣り -->
-            お釣り
-            <p id="show_change"></p>
+        <div class="f-container">
+            <div class="f-item">
+                <div>入力してください</div>
+            </div>
+            <div class="f-item">
+                <div>商品コード<input id="item_code" type="text"></div>
+                <div>注文個数<input id="quantity" type="text"></div>
+                <div><button id="check_1">確定</button></div>
+            </div>
+            <div class="f-item">
+                <!-- ご注文の商品コード -->
+                <div>商品コード</div>
+                <div id="show_item_code"></div>
+                <!-- ご注文個数 -->
+                <div>注文個数</div>
+                <div id="show_item_quantity"></div>
+                <!-- 合計金額 -->
+                <div>合計金額</div>
+                <div id="show_total_price"></div>
+            </div>
+            <div class="f-item">
+                <div>お預かり金額<input id="pay_amount" type="text"></div>
+                <div><button id="check_2">確定</button></div>
+            </div>
+            <div class="f-item">
+                <!-- お釣り -->
+                <div>お釣り</div>
+                <div id="show_change"></div>
+            </div>
+        </div>
         <script type="text/javascript" src="./eel.js"></script>
         <script>
             check_1.addEventListener('click', () => {
@@ -34,22 +46,22 @@
 
             eel.expose(view_item_code)
             function view_item_code(text){
-                show_item_code.innerHTML += text + "\n"
+                show_item_code.innerHTML += text
             }
 
             eel.expose(view_order_quantity)
             function view_order_quantity(text){
-                show_item_quantity.innerHTML += text + "\n"
+                show_item_quantity.innerHTML += text
             }
 
             eel.expose(view_total_price)
             function view_total_price(text){
-                show_total_price.innerHTML += text + "\n";
+                show_total_price.innerHTML += text
             }
 
             eel.expose(view_change)
             function view_change(text){
-                show_change.innerHTML += text + "\n"
+                show_change.innerHTML += text
             }
         </script>
     </body>
