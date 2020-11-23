@@ -4,6 +4,7 @@ import eel
 import sys
 import socket 
 
+
 # 定数
 ENTRY_POINT = 'index.html'
 CHROME_ARGS = [
@@ -31,6 +32,7 @@ def start(appName, endpoint,size):  # 画面生成
     }
     eel.start(endpoint, options=options,
         size=size, suppress_error=True)
+
 
 def exit(arg1, arg2):  # 終了時の処理
     sys.exit(0)
