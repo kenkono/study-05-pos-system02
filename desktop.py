@@ -31,7 +31,7 @@ def start(appName, endpoint,size):  # 画面生成
         'cmdline_args': CHROME_ARGS
     }
     eel.start(endpoint, options=options,
-        size=size, suppress_error=True)
+        size = size, suppress_error=True)
 
 
 def exit(arg1, arg2):  # 終了時の処理

@@ -3,9 +3,9 @@ import desktop
 import pos
 
 
-app_name="html"
-end_point="index.html"
-size=(700,600)
+app_name = "html"
+end_point = "index.html"
+size = (700,600)
 
 
 # @ eel.expose
