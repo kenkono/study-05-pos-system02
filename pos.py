@@ -3,19 +3,19 @@ import datetime as dt
 import eel
 
 
-### 商品クラス
+# 商品クラス
 class Item:
 
     def __init__(self, item_code, item_name, price):
         self.item_code = item_code
         self.item_name = item_name
         self.price = price
-    
+
     def get_price(self):
         return self.price
 
 
-### オーダークラス
+# オーダークラス
 class Order:
 
     def __init__(self, item_master):
@@ -23,13 +23,19 @@ class Order:
         self.item_list = []
         self.item_number_list = []
         self.item_master = item_master
-    
+
     def add_item_order(self, item_code):
-        self.item_order_list.append(item_code)
+        if item_code:
+            self.item_order_list.append(item_code)
+        else:
+            eel.show_item_order_error("数字を入力してください。")
 
     # 個数の登録
     def add_item_number(self, item_number):
-        self.item_number_list.append(item_number)
+        if item_number:
+            self.item_number_list.append(item_number)
+        else:
+            eel.show_item_number_error("数字を入力してください。")
 
     # 注文商品コードの表示
     def view_item_list(self):
@@ -72,7 +78,8 @@ class Master:
             item_master = []
             reader = csv.reader(f)
             for row in reader:
-                item_master.append(Item("{}".format(row[0]), "{}".format(row[1]), "{}".format(row[2])))
+                item_master.append(Item("{}".format(row[0]),
+                                   "{}".format(row[1]), "{}".format(row[2])))
             return item_master
 
     # 支払い金額登録
@@ -88,17 +95,18 @@ class Master:
             f.write(receipt_text)
 
 
-### メイン処理
+# メイン処理
 def main(item_code, order_quantity):
-    item_master = Master.read_master_item('master.csv')
-    
+    master = Master()
+    item_master = master.read_master_item('master.csv')
+
     # オーダー商品コード登録
     order = Order(item_master)
     order.add_item_order(item_code)
-    
+
     # オーダー個数入力
     order.add_item_number(order_quantity)
-    
+
     # オーダー商品コード表示
     order.view_item_list()
 
@@ -111,5 +119,8 @@ def main(item_code, order_quantity):
 
 
 def show_change(pay_amount, total_price):
-    change = int(pay_amount)-int(total_price)
+    if pay_amount:
+        change = int(pay_amount)-int(total_price)
+    else:
+        eel.show_pay_amount_error("数字を入力してください。")
     eel.view_change(change)

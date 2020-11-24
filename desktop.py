@@ -2,8 +2,7 @@
 
 import eel
 import sys
-import socket 
-
+import socket
 
 # 定数
 ENTRY_POINT = 'index.html'
@@ -31,8 +30,7 @@ def start(appName, endpoint, size):
         'port': port,
         'cmdline_args': CHROME_ARGS
     }
-    eel.start(endpoint, options=options,
-        size = size, suppress_error=True)
+    eel.start(endpoint, options=options, size=size, suppress_error=True)
 
 
 # 終了時の処理

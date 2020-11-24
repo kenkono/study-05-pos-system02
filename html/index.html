@@ -17,15 +17,18 @@
                 <!-- ご注文の商品コード -->
                 <div>商品コード</div>
                 <div id="show_item_code"></div>
+                <div id="show_item_code_error"></div>
                 <!-- ご注文個数 -->
                 <div>注文個数</div>
                 <div id="show_item_quantity"></div>
+                <div id="show_item_number_error"></div>
                 <!-- 合計金額 -->
                 <div>合計金額</div>
                 <div id="show_total_price"></div>
             </div>
             <div class="f-item">
                 <div>お預かり金額<input id="pay_amount" type="text"></div>
+                <div id="show_pay_amount_error"></div>
                 <div><button id="check_2">確定</button></div>
             </div>
             <div class="f-item">
@@ -37,31 +40,51 @@
         <script type="text/javascript" src="./eel.js"></script>
         <script>
             check_1.addEventListener('click', () => {
-                eel.main_1(item_code.value, quantity.value)
+                var item_code = document.getElementById('item_code').value
+                var quantity = document.getElementById('quantity').value
+
+                eel.main_1(item_code, quantity)
             })
             check_2.addEventListener('click', () => {
-                total_price = show_total_price.innerHTML
-                eel.main_2(pay_amount.value, total_price)
+                var pay_amount = document.getElementById('pay_amount').value
+                var total_price = document.getElementById('show_total_price').innerHTML
+
+                eel.main_2(pay_amount, total_price)
             })
 
             eel.expose(view_item_code)
             function view_item_code(text){
-                show_item_code.innerHTML += text
+                document.getElementById('show_item_code').innerHTML += text
+            }
+
+            eel.expose(show_item_order_error)
+            function show_item_order_error(text){
+                document.getElementById('show_item_code_error').innerHTML += text
             }
 
             eel.expose(view_order_quantity)
             function view_order_quantity(text){
-                show_item_quantity.innerHTML += text
+                document.getElementById('show_item_quantity').innerHTML += text
+            }
+
+            eel.expose(show_item_number_error)
+            function show_item_number_error(text){
+                document.getElementById('show_item_number_error').innerHTML += text
             }
 
             eel.expose(view_total_price)
             function view_total_price(text){
-                show_total_price.innerHTML += text
+                document.getElementById('show_total_price').innerHTML += text
             }
 
             eel.expose(view_change)
             function view_change(text){
-                show_change.innerHTML += text
+                document.getElementById('show_change').innerHTML += text
+            }
+
+            eel.expose(show_pay_amount_error)
+            function show_pay_amount_error(text){
+                document.getElementById('show_pay_amount_error').innerHTML += text
             }
         </script>
     </body>
